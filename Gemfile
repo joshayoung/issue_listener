@@ -4,3 +4,4 @@ gem 'httparty'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem "pry-byebug"
+gem "dotenv"
