@@ -5,7 +5,15 @@ require 'json'
 require 'pry-byebug'
 
 get '/' do
+  output = "<table>"
   response = HTTParty.get('https://api.github.com/repos/joshayoung/plot-notes/issues')
-  test = JSON.parse(response.body).to_s
-  test
+  response_body = JSON.parse(response.body)
+  response_body.each do |resp|
+    author = resp["author_association"]
+    if author == "OWNER"
+      title = resp["title"]
+      output += "<tr><td>#{title}</td></tr>"
+    end
+  end
+  "#{output}</table>"
 end
