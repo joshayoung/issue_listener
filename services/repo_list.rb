@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Repo
+class RepoList
   def initialize; end
 
   def list

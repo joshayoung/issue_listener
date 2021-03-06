@@ -15,8 +15,8 @@ Dotenv.load
 
 set :bind, '0.0.0.0'
 
-require './services/repo.rb'
-require './services/issue.rb'
+require './services/repo_list.rb'
+require './services/issue_list.rb'
 require './app'
 
 run IssuesDashboard

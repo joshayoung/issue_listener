@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-class Issue
+class IssueList
   def initialize(override: false)
     @override = override
   end
 
   def repos
-    Repo.new.list
+    RepoList.new.list
   end
 
   def static_list
