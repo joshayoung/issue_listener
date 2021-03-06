@@ -8,16 +8,19 @@ class Issue
   end
 
   def list
-    output = '<table>'
+    @val = []
     repos.each do |url|
-      response(url).each do |resp|
-        next if resp['author_association'] != 'OWNER'
-
-        title = resp['title']
-        output += "<tr><td>#{title}</td></tr>"
-      end
+      issues(url)
     end
-    "#{output}</table>"
+    @val
+  end
+
+  def issues(url)
+    response(url).each do |resp|
+      next if resp['author_association'] != 'OWNER'
+
+      @val << resp['title']
+    end
   end
 
   def response(url)

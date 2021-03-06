@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
 get '/' do
-  Issue.new.list
+  @i = Issue.new.list
+  erb :index
 end
