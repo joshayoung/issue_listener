@@ -1,16 +1,8 @@
 # frozen_string_literal: true
 
-require 'sinatra'
-require 'httparty'
-require 'sinatra/reloader' if development?
-require 'json'
-require 'pry-byebug'
-require 'dotenv'
-require './services/repo.rb'
-Dotenv.load
-
 get '/' do
   repos = Repo.new.list
+  repos = [repos.first, repos.last]
   output = '<table>'
   repos.each do |url|
     response = HTTParty.get(url, headers: { 'Authorization' => "token #{ENV['TOKEN']}" })

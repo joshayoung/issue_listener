@@ -4,15 +4,21 @@ class Repo
   def initialize; end
 
   def list
+    names = []
     @list ||= begin
-      names = []
-      response = HTTParty.get(ENV['REPOS'], headers: { 'Authorization' => "token #{ENV['TOKEN']}" })
-      response_body = JSON.parse(response.body)
-      response_body.each do |resp|
-        name = "#{resp['url']}/issues"
-        names << name
-      end
+      all_repos.each { |resp| names << "#{resp['url']}/issues" }
       names
     end
+  end
+
+  def all_repos
+    @all_repos ||= begin
+      repos = HTTParty.get(ENV['REPOS'], headers: authorization_header)
+      JSON.parse(repos.body)
+    end
+  end
+
+  def authorization_header
+    { 'Authorization' => "token #{ENV['TOKEN']}" }
   end
 end
