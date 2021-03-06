@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
 class Issue
+  def initialize; end
+
   def list
     repos = Repo.new.list
     output = '<table>'

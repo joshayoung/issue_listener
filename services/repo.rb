@@ -6,7 +6,9 @@ class Repo
   def list
     names = []
     @list ||= begin
-      all_repos.each { |resp| names << "#{resp['url']}/issues" }
+      all_repos.each do |resp|
+        names << "#{resp['url']}/issues" if resp['has_issues']
+      end
       names
     end
   end
