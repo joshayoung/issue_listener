@@ -18,7 +18,7 @@ class IssueList
 
     @val = []
     repos.each do |url|
-      issues(url)
+      issues(url.issue_link)
     end
     @val
   end
