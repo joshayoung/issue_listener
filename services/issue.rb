@@ -3,20 +3,29 @@
 class Issue
   def initialize; end
 
+  def repos
+    Repo.new.list
+  end
+
   def list
-    repos = Repo.new.list
     output = '<table>'
     repos.each do |url|
-      response = HTTParty.get(url, headers: { 'Authorization' => "token #{ENV['TOKEN']}" })
-      response_body = JSON.parse(response.body)
-      response_body.each do |resp|
-        author = resp['author_association']
-        next if author != 'OWNER'
+      response(url).each do |resp|
+        next if resp['author_association'] != 'OWNER'
 
         title = resp['title']
         output += "<tr><td>#{title}</td></tr>"
       end
     end
     "#{output}</table>"
+  end
+
+  def response(url)
+    response = HTTParty.get(url, headers: authorization_header)
+    JSON.parse(response.body)
+  end
+
+  def authorization_header
+    { 'Authorization' => "token #{ENV['TOKEN']}" }
   end
 end
