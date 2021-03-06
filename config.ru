@@ -9,5 +9,6 @@ require 'dotenv'
 Dotenv.load
 
 require './services/repo.rb'
+require './services/issue.rb'
 require './server'
 run Sinatra::Application
