@@ -13,6 +13,8 @@ end
 
 Dotenv.load
 
+set :bind, '0.0.0.0'
+
 require './services/repo.rb'
 require './services/issue.rb'
 require './server'

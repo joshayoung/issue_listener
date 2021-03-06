@@ -1,13 +1,21 @@
 # frozen_string_literal: true
 
 class Issue
-  def initialize; end
+  def initialize(override: false)
+    @override = override
+  end
 
   def repos
     Repo.new.list
   end
 
+  def static_list
+    %w[one two three]
+  end
+
   def list
+    return static_list if @override
+
     @val = []
     repos.each do |url|
       issues(url)
