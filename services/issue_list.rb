@@ -37,17 +37,29 @@ class IssueList
 
     @val = []
     repos.each do |repo|
-      issues(repo.issue_link)
+      next if repo.open_issues_count == 0
+
+      value = issues(repo)
+      # TODO: Fix this so this is not created if empty:
+      next if value[:issues].empty?
+
+      @val.push(value)
     end
     @val
   end
 
-  def issues(url)
-    response(url).each do |resp|
-      next if resp['author_association'] != 'OWNER'
+  def issues(repo)
+    part = {
+      repo: repo.name,
+      url: repo.url,
+      issues: []
+    }
+    response(repo.issue_link).each do |r|
+      next if r['author_association'] != 'OWNER'
 
-      @val << resp['title']
+      part[:issues].push(r['title'])
     end
+    part
   end
 
   def response(url)

@@ -6,7 +6,9 @@ class RepoList
   def list
     names = []
     @list ||= begin
-      all_repos.each { |resp| names << Repo.new(resp) }
+      all_repos.each do |resp|
+        names << Repo.new(resp)
+      end
       names
     end
   end

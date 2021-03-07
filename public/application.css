@@ -10,4 +10,5 @@ table {
   margin-bottom: 10px;
   width: 200px;
   float: left;
+  clear: both;
 }
