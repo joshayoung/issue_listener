@@ -1,5 +1,8 @@
-<table>
-  <% @i.each do |issue| %>
-    <tr><td><%= issue %></td></tr>
-  <% end %>
-</table>
+<% @i.each do |repo_list| %>
+  <table>
+    <tr><th><a href='<%= repo_list[:url] %>'><%= repo_list[:repo] %></a></th></tr>
+    <% repo_list[:issues].each do |issue| %>
+      <tr><td><%= issue %></td></tr>
+    <% end %>
+  </table>
+<% end %>

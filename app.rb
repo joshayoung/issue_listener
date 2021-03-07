@@ -2,7 +2,7 @@
 
 class IssuesDashboard < Sinatra::Base
   get '/' do
-    @i = IssueList.new(override: false).list
+    @i = IssueList.new(override: true).list
     erb :index
   end
 end

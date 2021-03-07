@@ -2,6 +2,12 @@ body {
   background: #aaa;
 }
 
-table td {
-  borer: 1px solid #ccc;
+table td, table th {
+  border: 1px solid #ccc;
+}
+
+table {
+  margin-bottom: 10px;
+  width: 200px;
+  float: left;
 }

@@ -10,15 +10,34 @@ class IssueList
   end
 
   def static_list
-    %w[one two three]
+    [
+      {
+        repo: 'My Repo Name',
+        url: 'http://www.test.com',
+        issues: %w[
+          one
+          two
+          three
+        ]
+      },
+      {
+        repo: 'My Repo Name 2',
+        url: 'http://www.test.com',
+        issues: %w[
+          one
+          two
+          three
+        ]
+      }
+    ]
   end
 
   def list
     return static_list if @override
 
     @val = []
-    repos.each do |url|
-      issues(url.issue_link)
+    repos.each do |repo|
+      issues(repo.issue_link)
     end
     @val
   end
