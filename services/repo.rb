@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Repo
   attr_accessor :name,
                 :description,
