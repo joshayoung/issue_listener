@@ -2,6 +2,11 @@ body {
   background: #aaa;
 }
 
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 table td, table th {
   border: 1px solid #ccc;
 }

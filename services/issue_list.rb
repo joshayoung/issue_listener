@@ -45,14 +45,15 @@ class IssueList
 
       @val.push(value)
     end
-    @val
+    @val.sort! { |a, b| b[:count] <=> a[:count] }
   end
 
   def issues(repo)
     part = {
       repo: repo.name,
       url: repo.url,
-      issues: []
+      issues: [],
+      count: repo.open_issues_count
     }
     response(repo.issue_link).each do |r|
       next if r['author_association'] != 'OWNER'
