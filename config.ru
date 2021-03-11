@@ -15,6 +15,7 @@ Dotenv.load
 
 set :bind, '0.0.0.0'
 
+require './modules/http.rb'
 require './services/repo.rb'
 require './services/repo_list.rb'
 require './services/issue_list.rb'
