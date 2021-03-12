@@ -20,9 +20,10 @@ class IssueList
         issues: []
       }
       response(repo.issue_link).each do |i|
-        next if i['author_association'] != 'OWNER'
+        issue = Issue.new(i)
+        next if issue.author_association != 'OWNER'
 
-        part[:issues].push(i['title'])
+        part[:issues].push(issue.title)
         # TODO: Utilize a combo of 'open_issue_count' and 'author_association' instead of recounting:
         part[:count] = part[:issues].count
       end
