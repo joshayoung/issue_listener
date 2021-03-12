@@ -3,7 +3,7 @@
     <table>
       <tr><th><a href='<%= repo_list.url %>'><%= repo_list.repo %></a></th></tr>
       <% repo_list.issues.each do |issue| %>
-        <tr><td><%= issue %></td></tr>
+        <tr><td><%= issue.title %></td></tr>
       <% end %>
     </table>
   <% end %>
