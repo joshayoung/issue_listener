@@ -12,32 +12,23 @@ class IssueList
   def list
     return static_list if @override
 
-    @val = []
+    parts = []
     repos.each do |repo|
-      next if repo.open_issues_count == 0
+      part = {
+        repo: repo.name,
+        url: repo.url,
+        issues: []
+      }
+      response(repo.issue_link).each do |i|
+        next if i['author_association'] != 'OWNER'
 
-      value = issues(repo)
-      # TODO: Fix this so this is not created if empty:
-      next if value[:issues].empty?
-
-      @val.push(value)
+        part[:issues].push(i['title'])
+        # TODO: Utilize a combo of 'open_issue_count' and 'author_association' instead of recounting:
+        part[:count] = part[:issues].count
+      end
+      parts.push(part) if part[:issues].count > 0
     end
-    @val.sort! { |a, b| b[:count] <=> a[:count] }
-  end
 
-  def issues(repo)
-    part = {
-      repo: repo.name,
-      url: repo.url,
-      issues: []
-    }
-    response(repo.issue_link).each do |r|
-      next if r['author_association'] != 'OWNER'
-
-      part[:issues].push(r['title'])
-    end
-    # TODO: Utilize a combo of 'open_issue_count' and 'author_association' instead of recounting:
-    part[:count] = part[:issues].count
-    part
+    parts.sort! { |a, b| b[:count] <=> a[:count] }
   end
 end
