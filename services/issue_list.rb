@@ -1,5 +1,5 @@
 class IssueList
-  include Http
+  include Helpers
 
   def initialize(override: false)
     @override = override

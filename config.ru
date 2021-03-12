@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'sinatra'
 require 'httparty'
 require 'sinatra/reloader' if development?
@@ -15,7 +13,7 @@ Dotenv.load
 
 set :bind, '0.0.0.0'
 
-require './modules/http.rb'
+require './modules/helpers.rb'
 require './services/repo.rb'
 require './services/issue.rb'
 require './services/dashboard.rb'

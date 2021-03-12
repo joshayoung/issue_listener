@@ -1,8 +1,8 @@
 class RepoList
-  include Http
+  include Helpers
 
   def list
-    @list ||= all_repos.map { |a| Repo.new(a) }
+    @list ||= all_repos.map { |repo| Repo.new(repo) }
   end
 
   def all_repos

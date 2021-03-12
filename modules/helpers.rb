@@ -1,4 +1,4 @@
-module Http
+module Helpers
 
   def authorization_header
     { 'Authorization' => "token #{ENV['TOKEN']}" }
