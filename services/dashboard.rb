@@ -7,7 +7,7 @@ class Dashboard
     @issues = issues
   end
 
-  def has_issues?
+  def issues?
     issues.count.positive?
   end
 end

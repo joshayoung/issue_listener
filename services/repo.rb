@@ -38,4 +38,8 @@ class Repo
   def issue_link
     issues_url.gsub!('{/number}', '')
   end
+
+  def no_issues?
+    open_issues_count.zero?
+  end
 end
