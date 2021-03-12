@@ -11,4 +11,8 @@ class Issue
     @author_association = issue["author_association"]
     @body = issue["body"]
   end
+
+  def user_initiated?
+    author_association != 'OWNER'
+  end
 end

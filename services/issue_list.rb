@@ -14,22 +14,17 @@ class IssueList
 
     parts = []
     repos.each do |repo|
-      part = {
-        repo: repo.name,
-        url: repo.url,
-        issues: []
-      }
+      issues = []
       response(repo.issue_link).each do |i|
         issue = Issue.new(i)
-        next if issue.author_association != 'OWNER'
+        next if issue.user_initiated?
 
-        part[:issues].push(issue.title)
-        # TODO: Utilize a combo of 'open_issue_count' and 'author_association' instead of recounting:
-        part[:count] = part[:issues].count
+        issues.push(issue.title)
       end
-      parts.push(part) if part[:issues].count > 0
+      dashboard = Dashboard.new(repo: repo, issues: issues)
+      parts.push(dashboard) if dashboard.has_issues?
     end
 
-    parts.sort! { |a, b| b[:count] <=> a[:count] }
+    parts.sort! { |a, b| b.issues.count <=> a.issues.count }
   end
 end
