@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 class LocalFile
   def written?(file)
-    File.size(file) > 0 && File.exist?(file)
+    File.exist?(file) && File.size(file) > 0
   end
 
   def append(file, data)
@@ -12,7 +10,7 @@ class LocalFile
   end
 
   def write(file, data)
-    File.open(file, 'w') do |f|
+    File.open(file, 'w+') do |f|
       f.write(data)
     end
   end

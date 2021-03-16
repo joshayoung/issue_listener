@@ -13,11 +13,11 @@ class RepoList
 
   def all_repos
     if @cache
-      if LocalFile.new.written?('repos.txt')
-        return LocalFile.new.read('repos.txt')
+      if LocalFile.new.written?('cache/repos.txt')
+        return LocalFile.new.read('cache/repos.txt')
       else
-        LocalFile.new.write('repos.txt', the_repos)
-        return LocalFile.new.read('repos.txt')
+        LocalFile.new.write('cache/repos.txt', the_repos)
+        return LocalFile.new.read('cache/repos.txt')
       end
     end
     JSON.parse(the_repos)
@@ -25,7 +25,6 @@ class RepoList
 
   def the_repos
     @all_repos ||= begin
-      binding.pry
       repos = HTTParty.get(ENV['REPOS'], headers: authorization_header)
       repos.body
     end

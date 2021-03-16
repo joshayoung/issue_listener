@@ -32,6 +32,16 @@ class IssueList
   end
 
   def my_response(link)
+    name = link.split("/")[5]
+    if @cache
+      if LocalFile.new.written?("cache/#{name}.txt")
+        return LocalFile.new.read("cache/#{name}.txt")
+      else
+        LocalFile.new.write("cache/#{name}.txt", response(link))
+        return LocalFile.new.read("cache/#{name}.txt")
+      end
+    end
+
     JSON.parse(response(link))
   end
 end
