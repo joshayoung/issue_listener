@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sinatra'
 require 'httparty'
 require 'sinatra/reloader' if development?
@@ -19,6 +21,7 @@ require './services/issue.rb'
 require './services/dashboard.rb'
 require './services/repo_list.rb'
 require './services/issue_list.rb'
+require './services/local_file.rb'
 require './app'
 
 run IssuesDashboard

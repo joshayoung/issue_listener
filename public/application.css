@@ -1,5 +1,18 @@
+:root {
+  --green1: #88B588;
+  --green2: #587558;
+  --green3: #B8F5B8;
+  --green4: #283628;
+  --green5: #A4DBA4;
+}
+
+a {
+  color: var(--green4);
+  text-decoration: none;
+}
+
 body {
-  background: #aaa;
+  background-color: var(--green1);
 }
 
 .wrap {
@@ -7,8 +20,13 @@ body {
   flex-wrap: wrap;
 }
 
-table td, table th {
-  border: 1px solid #ccc;
+table th {
+  text-decoration: uppercase;
+  padding: 10px 0;
+}
+
+table td {
+  border: 1px solid var(--green5);
 }
 
 table {

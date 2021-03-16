@@ -1,17 +1,15 @@
 class IssueList
   include Helpers
 
-  def initialize(override: false)
-    @override = override
+  def initialize(cache: nil)
+    @cache = cache
   end
 
   def repos
-    RepoList.new.list
+    RepoList.new(@cache).list
   end
 
   def list_sorted
-    return static_list if @override
-
     list.sort! { |a, b| b.count <=> a.count }
   end
 
@@ -28,8 +26,12 @@ class IssueList
   end
 
   def build_issue_array(repo)
-    response(repo.issue_link)
+    my_response(repo.issue_link)
       .filter { |issue| issue['author_association'] == 'OWNER' }
       .map { |custom_issue| Issue.new(custom_issue) }
+  end
+
+  def my_response(link)
+    JSON.parse(response(link))
   end
 end
