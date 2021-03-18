@@ -19,4 +19,8 @@ class IssuesDashboard < Sinatra::Base
               end
     erb :index
   end
+
+  get '/wip' do
+    erb :wip, :layout => :wip_layout
+  end
 end
