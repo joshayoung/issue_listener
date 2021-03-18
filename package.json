@@ -1,0 +1,23 @@
+{
+  "name": "issues_dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshayoung/issues_dashboard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshayoung/issues_dashboard/issues"
+  },
+  "homepage": "https://github.com/joshayoung/issues_dashboard#readme",
+  "dependencies": {
+    "tailwindcss": "^2.0.4",
+    "yarn": "^1.22.10"
+  }
+}
