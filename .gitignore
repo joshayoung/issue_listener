@@ -1,6 +1,7 @@
 .env
 .idea/
 cache/
+!cache/.keep
 node_modules/
 public/assets/*
 !public/assets/.keep
