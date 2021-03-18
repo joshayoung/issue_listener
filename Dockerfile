@@ -9,4 +9,7 @@ EXPOSE 4567
 
 RUN bundle install
 
-CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "4567"]
+# Dev Only:
+CMD ["rerun", "bundle exec rackup -o 0.0.0.0 -p 4567"]
+
+#CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "4567"]

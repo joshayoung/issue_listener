@@ -7,13 +7,7 @@ require 'json'
 require 'pry-byebug'
 require 'dotenv'
 
-after_reload do
-  puts 'reloaded'
-end
-
 Dotenv.load
-
-set :bind, '0.0.0.0'
 
 require './modules/helpers.rb'
 require './services/repo.rb'

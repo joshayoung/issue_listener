@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class RepoList
   include Helpers
 
@@ -24,7 +22,7 @@ class RepoList
   end
 
   def the_repos
-    @all_repos ||= begin
+    @the_repos ||= begin
       repos = HTTParty.get(ENV['REPOS'], headers: authorization_header)
       repos.body
     end
