@@ -2,3 +2,6 @@
 .idea/
 cache/
 node_modules/
+public/assets/*
+!public/assets/.keep
+yarn-error.log

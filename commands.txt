@@ -1,0 +1,3 @@
+node_modules/postcss-cli/bin/postcss ./public/application.scss -o ./public/test.css --parser postcss-import
+node_modules/postcss-cli/bin/postcss ./public/application.css -o ./public/assets/application.css
+yarn add -D postcss postcss-cli postcss-import
