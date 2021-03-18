@@ -23,4 +23,9 @@ class IssuesDashboard < Sinatra::Base
   get '/wip' do
     erb :wip, :layout => :wip_layout
   end
+
+  get '/summary' do
+    content_type "application/json"
+    erb :summary, :layout => nil
+  end
 end
