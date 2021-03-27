@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class IssuesDashboard < Sinatra::Base
-
   set :bind, '0.0.0.0'
-  #set :run, true
   set :port, 4567
 
   configure :development do
@@ -12,16 +10,15 @@ class IssuesDashboard < Sinatra::Base
   end
 
   get '/' do
-    @issues = if params[:cache] == 'true'
-                IssueList.new(cache: true).list_sorted
-              else
+    @issues = if params[:cache] == 'false'
                 IssueList.new.list_sorted
+              else
+                IssueList.new(cache: true).list_sorted
               end
     erb :index
   end
 
   get '/wip' do
-    # erb :wip, :layout => :wip_layout
     erb :wip
   end
 
@@ -31,6 +28,6 @@ class IssuesDashboard < Sinatra::Base
 
   get '/summary' do
     content_type "application/json"
-    erb :summary, :layout => nil
+    erb :summary, layout: nil
   end
 end

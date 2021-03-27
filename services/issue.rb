@@ -1,5 +1,5 @@
 class Issue
-  ATTRIBUTES = %i[url number title state created_at updated_at author_association body].freeze
+  ATTRIBUTES = %i[url number title state created_at updated_at author_association body html_url].freeze
   attr_accessor(*ATTRIBUTES)
 
   def initialize(issue)
