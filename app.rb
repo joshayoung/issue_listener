@@ -21,7 +21,12 @@ class IssuesDashboard < Sinatra::Base
   end
 
   get '/wip' do
-    erb :wip, :layout => :wip_layout
+    # erb :wip, :layout => :wip_layout
+    erb :wip
+  end
+
+  get '/archived' do
+    erb :archived
   end
 
   get '/summary' do

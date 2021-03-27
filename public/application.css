@@ -15,12 +15,13 @@ a {
   text-decoration: none;
 }
 
-body {
-}
-
 .wrap {
   display: flex;
   flex-wrap: wrap;
+}
+
+table:first-of-type {
+  margin-left: 0;
 }
 
 table th {
