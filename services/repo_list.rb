@@ -8,8 +8,13 @@ class RepoList
     @repo_type = repo_type
   end
 
-  def repo_type
+  def repo_object
     host = URI(@repo_type).host
+
+    if host == ENV['ALT']
+      return "GitLab"
+    end
+
     if host.split('.').count == 1
       return class_name[host.to_sym]
     end
@@ -27,7 +32,7 @@ class RepoList
 
   def list
     @list ||= all_repos.map do |repo|
-      repo_class = Object.const_get(repo_type)
+      repo_class = Object.const_get(repo_object)
       repo_class.new(repo)
     end
   end
@@ -46,7 +51,7 @@ class RepoList
 
   def the_repos
     @the_repos ||= begin
-      repos = HTTParty.get(@repo_type, headers: authorization_header)
+      repos = HTTParty.get(@repo_type, headers: authorization_header(type: repo_object))
       repos.body
     end
   end

@@ -27,7 +27,7 @@ class IssueList
 
   def build_issue_array(repo)
     my_response(repo.issue_link)
-      .filter { |issue| issue['author_association'] == 'OWNER' }
+      # .filter { |issue| issue['author_association'] == 'OWNER' }
       .map { |custom_issue| Issue.new(custom_issue) }
   end
 
