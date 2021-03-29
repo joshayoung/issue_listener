@@ -19,4 +19,9 @@ require './services/issue_list.rb'
 require './services/local_file.rb'
 require './app'
 
+configure :development do
+  register Sinatra::Reloader
+  set :logging, true
+end
+
 run IssuesDashboard
