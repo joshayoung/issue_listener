@@ -26,13 +26,12 @@ class IssueList
   end
 
   def build_issue_array(repo)
-    my_response(repo.issue_link)
-      # .filter { |issue| issue['author_association'] == 'OWNER' }
+    my_response(repo.issue_link, repo.name)
       .map { |custom_issue| Issue.new(custom_issue) }
+      .filter { |issue| issue.showit? }
   end
 
-  def my_response(link)
-    name = link.split("/")[5]
+  def my_response(link, name)
     if @cache
       if LocalFile.new.written?("cache/#{name}.txt")
         return LocalFile.new.read("cache/#{name}.txt")
