@@ -10,7 +10,8 @@ require 'dotenv'
 Dotenv.load
 
 require './modules/helpers.rb'
-require './services/repo.rb'
+require './services/github.rb'
+require './services/gitlab.rb'
 require './services/issue.rb'
 require './services/dashboard.rb'
 require './services/repo_list.rb'

@@ -1,4 +1,4 @@
-class Repo
+class GitHub
   ATTRIBUTES = %i[name description url tags_url languages_url commits_url issues_url created_at
                   updated_at size language has_issues has_projects archived open_issues_count
                   open_issues].freeze

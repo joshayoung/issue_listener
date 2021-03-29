@@ -1,4 +1,4 @@
-<div class='flex flex-wrap'>
+<div class='flex flex-wrap items-start'>
   <% @issues.each do |repo_list| %>
     <table class='mr-2 mb-4 w-52'>
       <tr><th class='border bg-yellow-300 px-4 text-left py-2'><a href='<%= repo_list.url %>'><%= repo_list.repo %></a></th></tr>

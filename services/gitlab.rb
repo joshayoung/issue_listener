@@ -1,0 +1,2 @@
+class GitLab
+end

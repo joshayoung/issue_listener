@@ -6,7 +6,7 @@ class IssueList
   end
 
   def repos
-    RepoList.new(@cache).list
+    RepoList.new(cache: @cache, repo_type: ENV['REPOS']).list
   end
 
   def list_sorted
