@@ -1,0 +1,27 @@
+version: '3.3'
+services:
+  app:
+    build:
+      context: .
+    container_name: issues-dashboard-container-alt
+    image: issues-dashboard-alt
+    env_file:
+      - .env
+    volumes:
+      - type: bind
+        source: "./"
+        target: /app
+        read_only: false
+    tty: true
+    stdin_open: true
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.gitlab.rule=Host(`gitlab.local`)
+      - traefik.http.routers.gitlab.entrypoints=web
+      - traefik.docker.network=web
+    networks:
+      - web
+
+networks:
+  web:
+    external: true

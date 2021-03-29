@@ -11,6 +11,9 @@
 ### Run with Docker Compose:
 * `docker-compose up --build`
 
+### Run Alt Server with Docker Compose:
+* `docker-compose -f ./docker-compose-alt.yml up --build`
+
 ### Run with Docker Compose in development mode:
 * `docker-compose run --service-ports --entrypoint "rerun 'bundle exec rackup --host 0.0.0.0 -p 4567'" app`
 **Note: This code is a working progress and needs to be refactored.**
