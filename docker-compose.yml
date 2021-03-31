@@ -7,6 +7,8 @@ services:
     image: issues-dashboard
     env_file:
       - .env
+    ports:
+      - "4567:4567"
     volumes:
       - type: bind
         source: "./"
@@ -19,6 +21,7 @@ services:
       - traefik.http.routers.github.rule=Host(`github.local`)
       - traefik.http.routers.github.entrypoints=web
       - traefik.docker.network=web
+      - traefik.http.services.github.loadbalancer.server.port=4567
     networks:
       - web
 
